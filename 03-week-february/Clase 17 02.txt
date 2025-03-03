@@ -1,0 +1,13 @@
+certificado csl, 
+
+técnicas de trabajo que se enfoca en el desarrollo rápido de un proyecto, agilismo
+
+Metodologias agiles: Enfocado en practicas de desarrollo para realizar diferentes tipos de proyectos
+
+SCRUM: Es interactivo pero permite realizar tareas por un periodo estricto de tiempo.  se documentan las necesidades de los usuarios, es un framework 
+
+SPRINTS: criterios minimos de calidad, puntos de historias para saber o verificar lo esperado en el proyecto
+
+-Kanban: Mayor flexibilidad, permite realizar tareas sin periodo fijos de tiempos evitando los cuellos de botella, al no tener periodos determinados puede afectar la entrega de tareas de otras personas.
+
+
