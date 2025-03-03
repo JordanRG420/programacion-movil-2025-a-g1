@@ -1,0 +1,9 @@
+1. Proyecto
+	HU - Entendimiento de proyecto
+		- MR
+			Inventario
+			Ventas
+			Seguridad
+			Proveedores 
+			Parametrización...
+			Entidades...
