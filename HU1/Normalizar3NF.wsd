@@ -1,0 +1,25 @@
+# Justificación de la Normalización hasta la 3NF
+
+El modelo de base de datos ha sido diseñado siguiendo los principios de normalización hasta la **Tercera Forma Normal (3NF)** para garantizar la integridad y eficiencia de los datos. A continuación, se justifica cómo se cumplen las tres primeras formas normales:
+
+## 1️⃣ Primera Forma Normal (1NF)
+- Todos los atributos contienen **valores atómicos**, es decir, no existen listas ni conjuntos de valores dentro de una misma columna.  
+- Se han separado los valores repetitivos en tablas relacionadas, como la posibilidad de que un pasajero tenga múltiples reservas.  
+
+## 2️⃣ Segunda Forma Normal (2NF)
+- El modelo se encuentra en 1NF y **todos los atributos dependen completamente de su clave primaria**.  
+- Se han eliminado dependencias parciales, asegurando que cada campo dentro de una tabla depende exclusivamente de la clave primaria y no solo de una parte de ella.  
+- Ejemplo aplicado: la **aerolínea de un vuelo** se encuentra en la tabla **Vuelo** y no en **Reserva_Vuelo**, evitando dependencias parciales.  
+
+## 3️⃣ Tercera Forma Normal (3NF)
+- Se ha eliminado cualquier **dependencia transitiva**, es decir, los atributos dependen únicamente de la clave primaria de su tabla y no de otros atributos no clave.  
+- Ejemplo aplicado: en la tabla **Vuelo**, la información del aeropuerto (como su nombre) se almacena en la tabla **Aeropuerto**, referenciada por **ID_Aeropuerto**, en lugar de incluir datos redundantes dentro de **Vuelo**.  
+- Esto mejora la consistencia de los datos y evita redundancia.  
+
+## 📌 Conclusión
+La base de datos **cumple con la 3NF**, lo que permite:
+✅ Reducir redundancias.  
+✅ Mantener la integridad referencial.  
+✅ Mejorar el rendimiento y escalabilidad del sistema.  
+
+Este proceso asegura que la aplicación móvil de gestión y control de vuelos pueda operar con datos organizados, optimizados y sin inconsistencias.

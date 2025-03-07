@@ -1,0 +1,35 @@
+@startuml
+start
+:Pasajero necesita verificar información del vuelo;
+if (¿Tiene acceso a una app centralizada?) then (No)
+    :Recurre a correos o mensajes de texto;
+    :La información no siempre está actualizada;
+endif
+
+:Pasajero llega al aeropuerto;
+if (¿La asignación de puertas es clara?) then (No)
+    :Confusión sobre la puerta de embarque;
+    :Posibles retrasos en el abordaje;
+endif
+
+fork
+    :Tripulación necesita actualizaciones de vuelo;
+    if (¿Existe un canal de comunicación eficiente?) then (No)
+        :Dependen de llamadas y correos;
+        :Respuesta lenta ante cambios de itinerario;
+    endif
+fork again
+    :Pasajero necesita hacer check-in o gestionar su vuelo;
+    if (¿Existe una plataforma móvil para esto?) then (No)
+        :Debe acudir al mostrador o múltiples sitios web;
+        :Experiencia del usuario afectada;
+    endif
+fork again
+    :Pasajero busca información sobre servicios adicionales;
+    if (¿La información está centralizada?) then (No)
+        :Debe usar varias aplicaciones para transporte y salas VIP;
+    endif
+end fork
+
+stop
+@enduml

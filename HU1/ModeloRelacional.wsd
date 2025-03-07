@@ -1,0 +1,79 @@
+@startuml
+entity Pasajero {
+    +ID_Pasajero : INT [PK]
+    Nombre : VARCHAR
+    Apellido : VARCHAR
+    Documento : VARCHAR
+    Correo : VARCHAR
+    Telefono : VARCHAR
+}
+
+entity Vuelo {
+    +ID_Vuelo : INT [PK]
+    Codigo_Vuelo : VARCHAR
+    Aerolinea : VARCHAR
+    Origen : VARCHAR
+    Destino : VARCHAR
+    Fecha : DATE
+    Hora_Salida : TIME
+    Hora_Llegada : TIME
+    Estado : VARCHAR
+    Puerta_Embarque : VARCHAR
+}
+
+entity Tripulacion {
+    +ID_Tripulacion : INT [PK]
+    Nombre : VARCHAR
+    Rol : VARCHAR
+    ID_Vuelo : INT [FK]
+}
+
+entity Aeronave {
+    +ID_Aeronave : INT [PK]
+    Matricula : VARCHAR
+    Modelo : VARCHAR
+    Capacidad : INT
+    Aerolinea : VARCHAR
+    Estado : VARCHAR
+}
+
+entity Aeropuerto {
+    +ID_Aeropuerto : INT [PK]
+    Codigo_IATA : VARCHAR
+    Nombre : VARCHAR
+    Ubicacion : VARCHAR
+    Terminales : INT
+    Puertas_Embarque : INT
+}
+
+entity Reserva_Vuelo {
+    +ID_Reserva : INT [PK]
+    ID_Pasajero : INT [FK]
+    ID_Vuelo : INT [FK]
+    Asiento : VARCHAR
+    Estado_Reserva : VARCHAR
+}
+
+entity Notificacion {
+    +ID_Notificacion : INT [PK]
+    Destinatario : INT [FK]
+    Tipo : VARCHAR
+    Mensaje : TEXT
+    Hora_Envio : TIMESTAMP
+}
+
+entity Servicio_Adicional {
+    +ID_Servicio : INT [PK]
+    Tipo : VARCHAR
+    Descripcion : TEXT
+    Disponibilidad : BOOLEAN
+    Costo : DECIMAL
+}
+
+' Relaciones entre entidades
+Pasajero ||--|{ Reserva_Vuelo : "tiene"
+Vuelo ||--o{ Reserva_Vuelo : "pertenece a"
+Vuelo ||--o{ Tripulacion : "asigna"
+Vuelo ||--o{ Aeronave : "usa"
+Vuelo ||--o{ Aeropuerto : "opera en"
+Pasajero ||--o{ Notificacion : "recibe"
