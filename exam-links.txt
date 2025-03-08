@@ -3,8 +3,7 @@ https://trello.com/invite/b/67c65b3e00aa41502a22ba0f/ATTIa455f69de6bbd4fd0b47571
 
 
 🔗 Enlace público de Figma con el diseño de HU3.
-https://www.figma.com/proto/2RgGSysEWW9Ub4vwt9mDUm/Parcial-1?node-id=0-1&t=rKhBhfxb24mwYq7X-1
-
+https://www.figma.com/design/2RgGSysEWW9Ub4vwt9mDUm/Parcial-1?node-id=0-1&m=dev&t=by16bajhr0LwVQJs-1
 
 🔗 Enlace del repositorio en Git.
 https://github.com/JordanRG420/programacion-movil-2025-a-g1/tree/main
