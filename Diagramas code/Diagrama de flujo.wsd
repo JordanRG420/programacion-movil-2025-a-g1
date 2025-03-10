@@ -1,0 +1,58 @@
+@startuml
+start
+:Usuario abre la aplicación;
+if (¿Tiene sesión iniciada?) then (Sí)
+  :Redirigir a Página Principal;
+else (No)
+  :Mostrar Pantalla de Bienvenida;
+  :Mostrar opciones de Inicio de Sesión y Registro;
+  if (El usuario elige "Iniciar Sesión") then (Sí)
+    :Ingresar correo y contraseña;
+    if (¿Credenciales válidas?) then (Sí)
+      :Redirigir a Página Principal;
+    else (No)
+      :Mostrar mensaje de error;
+    endif
+  else (Elige "Registrarse")
+    :Ingresar datos de usuario;
+    :Validar datos;
+    if (¿Datos correctos?) then (Sí)
+      :Registrar usuario en la BD;
+      :Mostrar mensaje de éxito;
+      :Redirigir a Inicio de Sesión;
+    else (No)
+      :Mostrar mensaje de error;
+    endif
+  endif
+endif
+
+:En Página Principal, el usuario busca hospedajes o experiencias;
+:Filtrar por nombre, destino y fecha;
+:Mostrar lista de resultados;
+
+if (El usuario selecciona "Reservar") then (Sí)
+  :Mostrar formulario de reservas;
+  :Ingresar datos de reserva;
+  :Validar disponibilidad;
+  if (¿Hay disponibilidad?) then (Sí)
+    :Confirmar reserva y generar código;
+    :Enviar confirmación por correo;
+  else (No)
+    :Mostrar mensaje de "No hay disponibilidad";
+  endif
+endif
+
+if (El usuario quiere ver sus reservas) then (Sí)
+  :Mostrar lista de reservas activas;
+  :Permitir cancelar o modificar reserva;
+endif
+
+if (El usuario quiere cerrar sesión) then (Sí)
+  :Cerrar sesión y redirigir a pantalla de bienvenida;
+endif
+
+stop
+@enduml
+
+
+
