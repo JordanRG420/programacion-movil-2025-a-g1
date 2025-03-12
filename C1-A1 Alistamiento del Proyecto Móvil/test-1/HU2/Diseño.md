@@ -1,7 +1,7 @@
-# 🎨 Definición de Colores, Tipografía, Iconografía y Layout Base
+# 🎨 HU2 - Definición de Identidad Visual  
 
 ## 📌 Descripción  
-Como **diseñador UX/UI**, quiero **definir una identidad visual coherente** para la aplicación, incluyendo colores, tipografía, iconografía y estructura base, para **garantizar una experiencia de usuario atractiva y consistente**.
+Como **diseñador UX/UI**, quiero **definir una identidad visual coherente** para la aplicación, incluyendo colores, tipografía, iconografía y estructura base, para **garantizar una experiencia de usuario atractiva y consistente**.  
 
 ---
 
@@ -23,9 +23,6 @@ Como **diseñador UX/UI**, quiero **definir una identidad visual coherente** par
 | 🔵 **Azul oscuro** | `#1A1A40`  | Alternativa para contrastes en fondos claros |
 | ⚪ **Gris claro**  | `#F5F5F5`  | Fondo de la interfaz |
 
-📌 **Referencia visual:**  
-![Paleta de colores](sandbox:/mnt/data/paleta_colores_skyline.png)
-
 ---
 
 ## ✍ Tipografía  
@@ -35,9 +32,6 @@ Como **diseñador UX/UI**, quiero **definir una identidad visual coherente** par
   - **Semibold (16px):** Para secciones importantes.  
   - **Bold (18px):** Para encabezados y títulos de secciones.  
   - **Black (20px):** Para destacar información clave.  
-
-📌 **Referencia visual:**  
-![Ejemplo de tipografía](sandbox:/mnt/data/tipografia_skyline.png)
 
 ---
 
@@ -56,4 +50,3 @@ Como **diseñador UX/UI**, quiero **definir una identidad visual coherente** par
 ✔ **Secciones estructuradas con jerarquía visual clara**  
 
 ---
-
