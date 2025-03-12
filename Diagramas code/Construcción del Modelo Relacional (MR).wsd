@@ -1,0 +1,86 @@
+@startuml
+
+entity Usuario {
+    +id_usuario: INT [PK]
+    --
+    nombre: VARCHAR
+    correo: VARCHAR
+    contraseña: VARCHAR
+    rol: ENUM('Turista', 'Anfitrion', 'Administrador')
+}
+
+entity Sitio_Turistico {
+    +id_sitio: INT [PK]
+    --
+    nombre: VARCHAR
+    descripcion: TEXT
+    ubicacion: VARCHAR
+}
+
+entity QR_Code {
+    +id_qr: INT [PK]
+    --
+    codigo: VARCHAR
+    id_sitio: INT [FK] 
+}
+
+entity Experiencia {
+    +id_experiencia: INT [PK]
+    --
+    titulo: VARCHAR
+    descripcion: TEXT
+    id_anfitrion: INT [FK]
+    id_sitio: INT [FK]  
+    precio: DECIMAL
+    cupos_disponibles: INT
+    estado: ENUM('Disponible', 'No Disponible')
+}
+
+entity Reserva {
+    +id_reserva: INT [PK]
+    --
+    id_usuario: INT [FK]
+    id_experiencia: INT [FK]
+    fecha_reserva: DATETIME
+    estado: ENUM('Pendiente', 'Confirmada', 'Cancelada')
+}
+
+entity Pago {
+    +id_pago: INT [PK]
+    --
+    id_reserva: INT [FK]
+    metodo_pago: ENUM('Tarjeta', 'PayPal', 'Efectivo')
+    monto: DECIMAL
+    estado: ENUM('Pendiente', 'Completado', 'Fallido')
+}
+
+entity Notificacion {
+    +id_notificacion: INT [PK]
+    --
+    id_usuario: INT [FK]
+    tipo: ENUM('Reserva', 'Pago', 'Error', 'Exito')
+    mensaje: TEXT
+    fecha: DATETIME
+}
+
+entity Valoracion {
+    +id_valoracion: INT [PK]
+    --
+    id_usuario: INT [FK]
+    id_experiencia: INT [FK]
+    calificacion: INT (1-5)
+    comentario: TEXT
+    fecha: DATETIME
+}
+
+' Relaciones
+Usuario ||--o{ Reserva
+Usuario ||--o{ Experiencia : "Crea"
+Sitio_Turistico ||--o{ QR_Code : "Tiene"
+Sitio_Turistico ||--o{ Experiencia : "Ubicado en"
+Reserva ||--|{ Pago
+Usuario ||--o{ Notificacion : "Recibe"
+Usuario ||--o{ Valoracion : "Escribe"
+Experiencia ||--o{ Valoracion : "Tiene"
+
+@enduml
