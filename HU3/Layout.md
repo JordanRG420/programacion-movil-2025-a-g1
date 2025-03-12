@@ -1,4 +1,4 @@
-# 📐 HU3: Primer Layout Funcional en Figma  
+# 📐 HU3 - Primer Layout Funcional en Figma  
 
 ## 📌 Descripción  
 Como **diseñador UX/UI**, quiero **crear el primer diseño funcional en Figma**, basado en los colores, tipografía y layout definidos en la HU2, para tener una estructura visual clara de la aplicación y facilitar el desarrollo.  
@@ -22,14 +22,14 @@ Como **diseñador UX/UI**, quiero **crear el primer diseño funcional en Figma**
 ✔ **Pantalla principal (Home)** con buscador de vuelos y opciones de navegación.  
 ✔ **Pantalla de "Mis vuelos"** con listado de vuelos.  
 ✔ **Menú lateral de navegación** con opciones para acceder a distintas secciones.  
+✔ **Pantalla de detalles del vuelo** con información relevante.  
+✔ **Pantalla de check-in** con opción de registro y descarga de información del vuelo.  
+✔ **Pantalla de notificaciones** con alertas sobre vuelos.  
+✔ **Pantalla de perfil** con datos del usuario.  
 
 ### 📌 **Pantallas pendientes por hacer:**  
 ❌ **Pantalla de resultados de búsqueda de vuelos.**  
-❌ **Pantalla de detalles del vuelo seleccionado.**  
-❌ **Pantalla de check-in y tarjeta de embarque digital.**  
-❌ **Pantalla de notificaciones con alertas en tiempo real.**  
-
-*(Si hay tiempo, estas pantallas se pueden diseñar después para completar la experiencia del usuario.)*  
+❌ **Pantalla de servicios en el aeropuerto.**  
 
 ---
 
