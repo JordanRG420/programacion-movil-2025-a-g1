@@ -28,3 +28,9 @@
 
 ### 04. Creación de esquemas y prototipos
 ![evidencia](Creación_de_esquemas_y_prototipos.png)
+#### En este curso, explorarás la escritura de UX, la arquitectura de la información y los mapas de sitio. Aprenderás sobre esquemas, prototipos y principios de UI para mejorar la accesibilidad. Finalmente, analizarás un caso práctico en un e-commerce de plantas.
+
+
+### 05. Pruebas de facilidad de uso y obtención de comentarios
+![evidencia](Pruebas_de_facilidad_de_uso_y_obtención_de_comentarios.png)
+#### En este curso, aprenderás cómo los diseñadores de UX evalúan sus diseños con pruebas de facilidad de uso. Descubrirás métodos, pasos y cómo priorizan la información obtenida. También verás cómo los comentarios mejoran los diseños y analizarás un caso práctico en un e-commerce de plantas
