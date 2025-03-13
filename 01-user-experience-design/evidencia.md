@@ -6,6 +6,9 @@
 ## Cursos
 ![evidencia](Cursos.png)
 
+## Certificado
+![evidencia](certificado.png)
+
 ## Módulos
 
 ### 01. Introducción al diseño de UX
@@ -17,6 +20,11 @@
 ![evidencia](Desarrollo_de_la_investigación_de_UX.png)
 #### Este curso te enseñará por qué la investigación es clave para diseñar experiencias centradas en el usuario. Aprenderás distintos métodos y técnicas de UX, cómo crear usuarios prototipo basados en datos reales y la importancia de analizar a la competencia para mejorar un producto. Además, explorarás un caso práctico donde se aplicaron estos conceptos en un proyecto real.
 
+
 ### 03. Creación de un diseño basado en historias
 ![evidencia](Creación_de_un_diseño_basado_en_historias.png)
 #### En este curso, aprenderás cómo las historias de usuario ayudan a entender mejor a los usuarios y a diseñar soluciones efectivas, explorando un caso práctico en un sitio web de venta de plantas.
+
+
+### 04. Creación de esquemas y prototipos
+![evidencia](Creación_de_esquemas_y_prototipos.png)
