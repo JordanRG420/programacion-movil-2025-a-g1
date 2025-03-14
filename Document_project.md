@@ -32,7 +32,7 @@ El desarrollo del proyecto está basado en una serie de **Historias de Usuario (
 
 ## **📎 Enlaces Importantes**
 - **Repositorio principal:** [GitHub - Turismo y Entretenimiento](https://github.com/JordanRG420/programacion-movil-2025-a-g1.git)
-- **Mockup del Proyecto:** [Figma - Diseño de Interfaz](https://www.figma.com/proto/Qg6zyEpXDPVUEkh98hkDVG/Untitled?node-id=0-1&t=BbX5qdvBrOmgHYos-1)
+- **Mockup del Proyecto:** [Figma - Diseño de Interfaz](https://www.figma.com/design/Qg6zyEpXDPVUEkh98hkDVG/Explora-Neiva_Programacion-Movil?node-id=0-1&m=dev&t=VkEi064l3gDVq8HN-1)
 - **Tablero de Gestión del Proyecto:** [Trello - Tareas y HU](https://trello.com/invite/b/67b7e2d5d9044bc5b1f023ce/ATTI3becb970c288c92c02f1c819929b6c7a1D3DA30E/turismoyentretenimiento)
 
 ## **🛠️ Tecnologías Utilizadas**
