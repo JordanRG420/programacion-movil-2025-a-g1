@@ -1,25 +1,47 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Home.css';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonList, IonItem, IonLabel } from '@ionic/react';
 
-const Home: React.FC = () => {
+const SecondPage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonTitle>Blank</IonTitle>
+        <IonToolbar color="success">
+          <IonTitle>Resumen de Pedido</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer />
+      <IonContent className="ion-padding">
+        
+        {/* Encabezado simple */}
+        <div className="ion-text-center ion-margin-vertical">
+          <h2 style={{ color: 'var(--ion-color-success)' }}>Detalles del Envío</h2>
+          <p>Tu pedido está en camino</p>
+        </div>
+
+        {/* Información básica */}
+        <IonList lines="none">
+          <IonItem>
+            <IonLabel>N° Pedido:</IonLabel>
+            <IonLabel slot="end">#13579</IonLabel>
+          </IonItem>
+          <IonItem>
+            <IonLabel>Fecha:</IonLabel>
+            <IonLabel slot="end">15/03/2025</IonLabel>
+          </IonItem>
+          <IonItem>
+            <IonLabel>Dirección:</IonLabel>
+            <IonLabel slot="end">CORHUILA Prado Alto</IonLabel>
+          </IonItem>
+        </IonList>
+
+        {/* Botón simple */}
+        <div className="ion-margin-top">
+          <IonButton expand="block" color="success">
+            Ver estado completo
+          </IonButton>
+        </div>
+
       </IonContent>
     </IonPage>
   );
 };
 
-export default Home;
+export default SecondPage;
