@@ -1,0 +1,28 @@
+.form-card {
+  max-width: 640px;
+  margin: 30px auto;
+  padding-top: 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.form-card:hover {
+  transform: translateY(-4px);
+}
+
+.form-card ion-card-header {
+  background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.form-card ion-card-title {
+  font-weight: bold;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}

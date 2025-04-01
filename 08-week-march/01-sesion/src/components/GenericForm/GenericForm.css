@@ -1,0 +1,58 @@
+.form-field {
+  margin-top: 30px !important;
+  --background: #f4f5f8;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  transition: box-shadow 0.3s ease;
+}
+
+.form-field:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-field ion-icon {
+  color: var(--ion-color-primary);
+  font-size: 1.5rem;
+}
+
+.form-field ion-label {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+ion-input {
+  background: white;
+  border-radius: 10px;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.first-field {
+  margin-top: 30px !important;
+}
+
+ion-input:focus {
+  outline: none;
+  border: 2px solid var(--ion-color-primary);
+  box-shadow: 0 0 5px var(--ion-color-primary);
+}
+.fade-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+

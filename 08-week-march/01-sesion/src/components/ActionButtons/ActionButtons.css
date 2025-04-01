@@ -1,0 +1,40 @@
+.action-buttons {
+  margin-top: 30px;
+}
+
+.action-buttons ion-row {
+  margin-bottom: 12px;
+}
+
+.action-buttons ion-button {
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 14px 0;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.action-buttons ion-button:hover {
+  transform: scale(1.04);
+}
+
+.action-buttons ion-button[color="primary"] {
+  --background: #1e90ff;
+  --color: white;
+}
+
+.action-buttons ion-button[color="secondary"] {
+  --background: #ffa502;
+  --color: white;
+}
+
+.action-buttons ion-button[color="danger"] {
+  --background: #ff4757;
+  --color: white;
+}
+
+.action-buttons ion-button[color="tertiary"] {
+  --background: #2ed573;
+  --color: white;
+}
