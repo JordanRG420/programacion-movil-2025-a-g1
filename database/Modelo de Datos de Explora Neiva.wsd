@@ -1,0 +1,84 @@
+@startuml ModeloDatosExploraNeiva
+
+entity Persona {
+    +id: INT [PK]
+    --
+    nombre: VARCHAR
+    apellido: VARCHAR
+    email: VARCHAR [UK]
+    telefono: VARCHAR
+    estado: ENUM('Activo', 'Inactivo')
+}
+
+entity Empleado {
+    +id: INT [PK]
+    --
+    persona_id: INT [FK]
+    fecha_ingreso: DATE
+    salario: DECIMAL
+    cargo: VARCHAR
+}
+
+entity Proveedor {
+    +id: INT [PK]
+    --
+    persona_id: INT [FK]
+    especialidad: VARCHAR
+    ruc: VARCHAR [UK]
+}
+
+entity Cliente {
+    +id: INT [PK]
+    --
+    persona_id: INT [FK]
+    tipo: VARCHAR
+    puntos_acumulados: INT
+}
+
+entity Tour {
+    +id: INT [PK]
+    --
+    nombre: VARCHAR
+    descripcion: TEXT
+    precio: DECIMAL
+    capacidad_maxima: INT
+    proveedor_id: INT [FK]
+}
+
+entity Reserva {
+    +id: INT [PK]
+    --
+    cliente_id: INT [FK]
+    tour_id: INT [FK]
+    fecha_tour: DATE
+    estado: ENUM('Pendiente', 'Confirmada', 'Cancelada')
+    metodo_pago: ENUM('Tarjeta', 'PayPal', 'Efectivo')
+}
+
+entity Pago {
+    +id: INT [PK]
+    --
+    reserva_id: INT [FK]
+    monto: DECIMAL
+    estado: ENUM('Pendiente', 'Completado', 'Fallido')
+}
+
+entity Valoracion {
+    +id: INT [PK]
+    --
+    reserva_id: INT [FK]
+    puntuacion: INT (1-5)
+    comentario: TEXT
+}
+
+' Relaciones
+Persona ||--|| Empleado : "Es"
+Persona ||--|| Proveedor : "Es"
+Persona ||--|| Cliente : "Es"
+Proveedor ||--o{ Tour : "Ofrece"
+Cliente ||--o{ Reserva : "Realiza"
+Tour ||--o{ Reserva : "Tiene"
+Reserva ||--|| Pago : "Genera"
+Reserva ||--|| Valoracion : "Recibe"
+
+@enduml
