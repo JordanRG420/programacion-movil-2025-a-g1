@@ -80,7 +80,7 @@ El diagrama muestra la secuencia de pasos desde la exploración de sitios hasta 
 ### **3️⃣ Construcción del Modelo Relacional (MR)**  
 Se presenta la estructura de la base de datos, con sus entidades y relaciones.  
 
-![Modelo Relacional](Modelo_Relacional.png)  
+![Modelo Relacional](/database/Modelo_Relacional.png)
 
 #### **Explicación:**  
 La base de datos está conformada por las siguientes entidades:  
