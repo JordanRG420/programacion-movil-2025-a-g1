@@ -10,4 +10,3 @@ Este directorio contiene toda la documentación relacionada con el proyecto Expl
   <<<<<<< HEAD
 - # `HU-03/`: Implementación de Entidades en la Aplicación Móvil de Reservas de Hoteles y Sitios Turísticos
 - `HU-03/`: Implementación de Entidades en la Aplicación Móvil de Reservas de Hoteles y Sitios Turísticos
-  > > > > > > > 5a493e0d2515f1f934ec0befcb5bf056dcb04e8e
