@@ -1,6 +1,6 @@
 # 📌 Comandos básicos de Git
 
-## 🔹 Configuración inicial de Git
+##  Configuración inicial de Git
 ```bash
 git config --global user.name "TuNombre"
 git config --global user.email "tuemail@example.com"
