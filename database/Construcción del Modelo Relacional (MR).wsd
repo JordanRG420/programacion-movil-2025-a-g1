@@ -1,86 +1,57 @@
 @startuml
+' Estilo visual
+skinparam linetype ortho
+skinparam roundcorner 20
+skinparam shadowing true
+
+' Entidades
 
 entity Usuario {
-    +id_usuario: INT [PK]
+    +id_usuario: INT <<PK>>
     --
     nombre: VARCHAR
     correo: VARCHAR
     contraseña: VARCHAR
-    rol: ENUM('Turista', 'Anfitrion', 'Administrador')
+    rol: ENUM('Administrador', 'Empleado')
+}
+
+entity Cliente {
+    +id_cliente: INT <<PK>>
+    --
+    nombre_completo: VARCHAR
+    identificacion: VARCHAR
+    telefono: VARCHAR
 }
 
 entity Sitio_Turistico {
-    +id_sitio: INT [PK]
+    +id_sitio: INT <<PK>>
     --
     nombre: VARCHAR
     descripcion: TEXT
-    ubicacion: VARCHAR
+    valoracion: DECIMAL(2,1) -- Ej: 4.5
+    precio: DECIMAL(10,2)
+    url_ubicacion: VARCHAR -- Enlace externo (Maps o página)
 }
 
-entity QR_Code {
-    +id_qr: INT [PK]
+entity Reservacion {
+    +id_reservacion: INT <<PK>>
     --
-    codigo: VARCHAR
-    id_sitio: INT [FK] 
-}
-
-entity Experiencia {
-    +id_experiencia: INT [PK]
-    --
-    titulo: VARCHAR
-    descripcion: TEXT
-    id_anfitrion: INT [FK]
-    id_sitio: INT [FK]  
-    precio: DECIMAL
-    cupos_disponibles: INT
-    estado: ENUM('Disponible', 'No Disponible')
-}
-
-entity Reserva {
-    +id_reserva: INT [PK]
-    --
-    id_usuario: INT [FK]
-    id_experiencia: INT [FK]
-    fecha_reserva: DATETIME
-    estado: ENUM('Pendiente', 'Confirmada', 'Cancelada')
-}
-
-entity Pago {
-    +id_pago: INT [PK]
-    --
-    id_reserva: INT [FK]
-    metodo_pago: ENUM('Tarjeta', 'PayPal', 'Efectivo')
-    monto: DECIMAL
-    estado: ENUM('Pendiente', 'Completado', 'Fallido')
-}
-
-entity Notificacion {
-    +id_notificacion: INT [PK]
-    --
-    id_usuario: INT [FK]
-    tipo: ENUM('Reserva', 'Pago', 'Error', 'Exito')
-    mensaje: TEXT
-    fecha: DATETIME
-}
-
-entity Valoracion {
-    +id_valoracion: INT [PK]
-    --
-    id_usuario: INT [FK]
-    id_experiencia: INT [FK]
-    calificacion: INT (1-5)
-    comentario: TEXT
-    fecha: DATETIME
+    id_cliente: INT <<FK>>
+    id_usuario: INT <<FK>>
+    id_sitio: INT <<FK>>
+    fecha_reserva: DATE
+    hora_reserva: TIME
+    numero_personas: INT
+    observaciones: TEXT
+    estado: ENUM('Activa', 'Cancelada', 'Finalizada')
+    metodo_pago: ENUM('Efectivo', 'Consignacion')
+    estado_pago: BOOLEAN 
+    fecha_creacion: DATETIME
 }
 
 ' Relaciones
-Usuario ||--o{ Reserva
-Usuario ||--o{ Experiencia : "Crea"
-Sitio_Turistico ||--o{ QR_Code : "Tiene"
-Sitio_Turistico ||--o{ Experiencia : "Ubicado en"
-Reserva ||--|{ Pago
-Usuario ||--o{ Notificacion : "Recibe"
-Usuario ||--o{ Valoracion : "Escribe"
-Experiencia ||--o{ Valoracion : "Tiene"
+Usuario ||--o{ Reservacion : "Registra"
+Cliente ||--o{ Reservacion : "Solicita"
+Sitio_Turistico ||--o{ Reservacion : "Se reserva"
 
 @enduml
