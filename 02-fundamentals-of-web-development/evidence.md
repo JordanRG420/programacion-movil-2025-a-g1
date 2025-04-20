@@ -21,3 +21,9 @@
 ![evidencia](/02-fundamentals-of-web-development/additional_modules/02-Desarrollo-sitios-web.png)
 
 #### Este módulo presenta los conceptos clave del desarrollo web, desde los fundamentos de los sistemas informáticos hasta el uso de lenguajes como HTML, CSS y JavaScript. Explica cómo trabajan el front-end y el back-end, y cómo se aplican metodologías como el enfoque ágil y el marco Scrum para construir sitios web eficientes.
+
+
+### 03. Introducción a HTML y CSS
+![evidencia](/02-fundamentals-of-web-development/additional_modules/03-Introduccion-HTML-CSS.png)
+
+#### Este módulo introduce la estructura básica de HTML y los elementos esenciales para construir páginas web. Enseña cómo utilizar atributos, organizar el contenido y aplicar estilos mediante CSS. Además, explora el modelo de cuadro CSS y promueve buenas prácticas en la escritura de código, destacando también el valor de los entornos de desarrollo integrados para mejorar el flujo de trabajo del desarrollador.
