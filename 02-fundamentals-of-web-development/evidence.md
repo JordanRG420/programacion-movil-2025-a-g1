@@ -39,3 +39,8 @@
 ![evidencia](/02-fundamentals-of-web-development/additional_modules/05-Prueba-despliegue-sitios-web.png)
 
 #### Este curso enseña cómo los desarrolladores web prueban sus sitios antes de hacerlos públicos. Se explican los diferentes tipos de pruebas, especialmente las automatizadas, y su importancia para asegurar el correcto funcionamiento del sitio. También se aborda el uso de sistemas de control de versiones, que permiten una entrega más rápida y organizada de nuevas funcionalidades. Además, se describen los pasos necesarios para publicar un sitio web, así como las diferencias entre entrega continua y despliegue continuo. El curso introduce el ciclo de vida DevOps, el diseño web adaptable, y la entrega de contenido tanto en sitios como en aplicaciones web. Finalmente, se explican conceptos clave como la computación en la nube, el uso de contenedores y las máquinas virtuales, así como las herramientas comunes para probar y automatizar el despliegue web.
+
+### 06. Desarrollar una página web de lista de tareas interactive
+![evidencia](/02-fundamentals-of-web-development/additional_modules/06-Desarrollar-pagina-web-lista-tareas.png)
+
+#### Este curso se enfoca en la creación práctica de una página web interactiva tipo lista de tareas. A través de simulaciones, aprenderás a usar HTML para la estructura, CSS para los estilos y JavaScript para la interactividad. También practicarás pruebas funcionales básicas y el uso de Visual Studio Code como entorno de desarrollo.
