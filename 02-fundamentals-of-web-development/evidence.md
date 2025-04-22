@@ -1,12 +1,19 @@
 # Fundamentos del desarrollo web
 
+## Canales
+![evidencial](/02-fundamentals-of-web-development/additional_modules/canales.png)
+
+
 ## Plan de formación 
+![evidencial](/02-fundamentals-of-web-development/additional_modules/plan-formacion.png)
 
 
 ## Cursos 
+![evidencial](/02-fundamentals-of-web-development/additional_modules/cursos.png)
 
 
 ## Certificado
+![evidencial](/02-fundamentals-of-web-development/additional_modules/certificado.png)
 
 
 ## Módlulos 
