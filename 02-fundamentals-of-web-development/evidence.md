@@ -33,3 +33,9 @@
 ![evidencia](/02-fundamentals-of-web-development/additional_modules/04-Creación-sitios-web-dinámicos-JavaScript.png)
 
 #### Este curso representa una base esencial para quienes desean comprender cómo se construyen sitios web dinámicos en el desarrollo moderno. A través del aprendizaje de JavaScript, los estudiantes exploran la lógica fundamental detrás de la interactividad web, entendiendo cómo variables, funciones, operadores y eventos se integran con HTML para enriquecer la experiencia del usuario.
+
+
+### 05. Prueba y despliegue de sitios web
+![evidencia](/02-fundamentals-of-web-development/additional_modules/05-Prueba-despliegue-sitios-web.png)
+
+#### Este curso enseña cómo los desarrolladores web prueban sus sitios antes de hacerlos públicos. Se explican los diferentes tipos de pruebas, especialmente las automatizadas, y su importancia para asegurar el correcto funcionamiento del sitio. También se aborda el uso de sistemas de control de versiones, que permiten una entrega más rápida y organizada de nuevas funcionalidades. Además, se describen los pasos necesarios para publicar un sitio web, así como las diferencias entre entrega continua y despliegue continuo. El curso introduce el ciclo de vida DevOps, el diseño web adaptable, y la entrega de contenido tanto en sitios como en aplicaciones web. Finalmente, se explican conceptos clave como la computación en la nube, el uso de contenedores y las máquinas virtuales, así como las herramientas comunes para probar y automatizar el despliegue web.
