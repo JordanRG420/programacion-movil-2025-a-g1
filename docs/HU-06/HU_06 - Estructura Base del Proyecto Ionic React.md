@@ -1,4 +1,4 @@
-# *HU_04 - Estructura Base del Proyecto Ionic React*
+# *HU_06 - Estructura Base del Proyecto Ionic React*
 
 ## *Descripción:*
 
