@@ -11,3 +11,4 @@ Este directorio contiene toda la documentación relacionada con el proyecto Expl
 - `HU-04/`: HU_04 - Refinamiento HU01
 - `HU-05/`: Implementación de Entidades en la Aplicación Móvil Refinamiento de la HU03
 - `HU-06/`: Estructura Base del Proyecto Ionic React
+- `HU-07/`: Configuración Inicial del Backend con Spring Boot
