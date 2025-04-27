@@ -1,0 +1,75 @@
+@startuml
+
+
+entity "Usuario" as Usuario {
+  +id_usuario : int <<PK>>
+  nombre : string
+  correo : string
+  rol : string
+  contraseña : string
+  createdAt : datetime
+  updatedAt : datetime
+  deletedAt : datetime
+  createdBy : string
+  updatedBy : string
+  deletedBy : string
+  state : boolean
+}
+
+entity "Cliente" as Cliente {
+  +id_cliente : int <<PK>>
+  nombre_completo : string
+  telefono : string
+  correo : string
+  documento_identidad : string
+  createdAt : datetime
+  updatedAt : datetime
+  deletedAt : datetime
+  createdBy : string
+  updatedBy : string
+  deletedBy : string
+  state : boolean
+}
+
+entity "Reservación" as Reservacion {
+  +id_reservacion : int <<PK>>
+  fecha : date
+  hora : time
+  numero_personas : int
+  precio : decimal
+  observaciones : text
+  id_usuario : int <<FK>>
+  id_cliente : int <<FK>>
+  id_servicio : int <<FK>>
+  createdAt : datetime
+  updatedAt : datetime
+  deletedAt : datetime
+  createdBy : string
+  updatedBy : string
+  deletedBy : string
+  state : boolean
+}
+
+entity "Servicio" as Sitio {
+  +id_servicio : int <<PK>>
+  nombre : string
+  ubicacion : string
+  tipo : string
+  descripcion : text
+  previsualiacion : string
+  createdAt : datetime
+  updatedAt : datetime
+  deletedAt : datetime
+  createdBy : string
+  updatedBy : string
+  deletedBy : string
+  state : boolean
+}
+
+
+' Relaciones claras y directas
+Reservacion }o--|| Usuario : "registrada por"
+Reservacion }o--|| Cliente : "solicitada por"
+Reservacion }o--|| Sitio   : "reserva"
+
+@enduml

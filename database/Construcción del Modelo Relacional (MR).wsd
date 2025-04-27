@@ -142,3 +142,4 @@ Cliente ||--o{ Reservacion : "Solicita"
 Sitio_Turistico ||--o{ Reservacion : "Se reserva"
 
 @enduml
+

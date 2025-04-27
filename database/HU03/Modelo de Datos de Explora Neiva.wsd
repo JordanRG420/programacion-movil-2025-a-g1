@@ -1,0 +1,74 @@
+@startuml ModeloDatosExploraNeiva
+
+entity "Usuario" as Usuario {
+  +id_usuario : int <<PK>>
+  nombre : string
+  correo : string
+  rol : string
+  contraseña : string
+  createdAt : datetime
+  updatedAt : datetime
+  deletedAt : datetime
+  createdBy : string
+  updatedBy : string
+  deletedBy : string
+  state : boolean
+}
+
+entity "Cliente" as Cliente {
+  +id_cliente : int <<PK>>
+  nombre_completo : string
+  telefono : string
+  correo : string
+  documento_identidad : string
+  createdAt : datetime
+  updatedAt : datetime
+  deletedAt : datetime
+  createdBy : string
+  updatedBy : string
+  deletedBy : string
+  state : boolean
+}
+
+entity "Reservación" as Reservacion {
+  +id_reservacion : int <<PK>>
+  fecha : date
+  hora : time
+  numero_personas : int
+  observaciones : text
+  tipo_reserva : string <<habitación/servicio/atracción>>
+  id_referencia : int <<FK>>
+  id_usuario : int <<FK>>
+  id_cliente : int <<FK>>
+  createdAt : datetime
+  updatedAt : datetime
+  deletedAt : datetime
+  createdBy : string
+  updatedBy : string
+  deletedBy : string
+  state : boolean
+}
+
+entity "Sitio Turístico o servicio" as Sitio {
+  +id_sitio_turistico : int <<PK>>
+  nombre : string
+  ubicacion : string
+  tipo : string
+  descripcion : text
+  createdAt : datetime
+  updatedAt : datetime
+  deletedAt : datetime
+  createdBy : string
+  updatedBy : string
+  deletedBy : string
+  state : boolean
+}
+
+
+' Relaciones claras y directas
+Reservacion }o--|| Usuario : "registrada por"
+Reservacion }o--|| Cliente : "solicitada por"
+Reservacion }o--|| Sitio   : "se reserva"
+
+@enduml
+
