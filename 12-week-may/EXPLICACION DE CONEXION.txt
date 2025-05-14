@@ -1,0 +1,366 @@
+	Configuración CORS en el Backend (AppConfig.java)
+El Cross-Origin Resource Sharing (CORS) es un mecanismo de seguridad que controla qué dominios externos pueden acceder a los recursos del backend. 
+
+	-Seguridad: Restringe el acceso solo a los orígenes permitidos
+
+	-Flexibilidad: Permite que el frontend  se comunique con el backend sin bloqueos del navegador.
+
+	-Credenciales: setAllowCredentials(true) habilita el envío de cookies/tokens (útil para autenticación).
+
+	
+------------------------------------------------------------------
+@Configuration  // Indica que esta clase define beans de configuración para Spring.
+@Bean Marca el método corsConfigurationSource() como un bean gestionado por Spring.
+
+public CorsConfigurationSource corsConfigurationSource()
+
+Método que crea y retorna la configuración CORS.
+------------------------------------------------------------------
+config.setAllowedOrigins(Arrays.asList(...));
+Define los orígenes permitidos (frontend):
+
+http://localhost:8100: Dirección del servidor de desarrollo de Ionic.
+
+capacitor://localhost: Para apps móviles compiladas con Capacitor.
+
+http://localhost: Para emuladores o pruebas locales.
+------------------------------------------------------------------
+config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+
+Métodos HTTP permitidos: CRUD + OPTIONS
+
+Se utilizan para verificar si el servidor permite la solicitud de origen cruzado antes de enviarla
+
+------------------------------------------------------------------
+
+config.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization", "X-Requested-With", "Accept"));
+
+Headers permitidos en las solicitudes:
+
+Content-Type: Indica el tipo de dato (ej: application/json).
+
+Authorization: Para enviar tokens JWT.
+
+X-Requested-With: Identifica peticiones AJAX. se utiliza para realizar peticiones HTTP asíncronas
+
+Accept: Especifica el tipo de respuesta esperada.
+
+----------------------------------------------------------------------
+config.setAllowCredentials(true);
+
+Permite el envío de cookies/tokens de autenticación (necesario para sesiones o JWT).
+------------------------------------------------------------------------
+config.setMaxAge(3600L);
+
+Cachea la configuración CORS por 1 hora (3600 segundos), optimizando peticiones futuras.
+CORS (Cross-Origin Resource Sharing):
+Es un mecanismo de seguridad del navegador que permite que un sitio web acceda a recursos de otro dominio diferente. La configuración CORS controla qué orígenes son permitidos para acceder a los recursos del servidor. 
+setMaxAge(3600L):
+Esta línea de código establece un valor para la cabecera HTTP Access-Control-Max-Age. Esta cabecera indica al navegador cuánto tiempo puede almacenar en caché la configuración CORS antes de volver a solicitarla al servidor. 
+3600L:
+
+------------------------------------------------------------------------
+registerCorsConfiguration("/**", config)
+
+Asocia la configuración config a todas las rutas del backend (/**).
+
+--------------------------------------------------------------------------
+return source para:
+
+Verificar orígenes en cada petición.
+
+Añadir headers CORS a las respuestas.
+
+Permitir métodos HTTP definidos.
+--------------------------------------------------------------
+
+Uso de Axios en el servicio:
+
+	Backend (Spring Boot) recibe la solicitud
+
+El CORS Filter verifica que el origen (http://localhost:8100) esté permitido.
+
+El Controller procesa la petición y delega al Service.
+
+El Service consulta la base de datos y estructura la respuesta con ApiResponseDto.
+
+-	CORS asegura que solo tu frontend pueda acceder al backend.
+
+-	ApiResponseDto estandariza las respuestas para un manejo fácil en el frontend.
+
+-	Axios + Pinia gestionan las peticiones y el estado de forma reactiva.
+
+
+*************************************************************************************
+		Frontend
+api.ts 
+Responsabilidad: Configuración global de Axios para llamadas HTTP.
+Interacciones:
+
+Define la URL base del backend (http://localhost:9000/api).
+
+Añade interceptores para manejar errores y transformar peticiones/respuestas.
+
+Los interceptores en tu frontend Ionic Vue son esenciales para:
+✅ Mantener código limpio (evitar repetición).
+✅ Gestionar errores de forma consistente.
+✅ Añadir lógica transversal (ej: autenticación).
+
+Los interceptores son funciones que permiten interceptar y modificar peticiones HTTP (request) o respuestas (response) antes de que sean manejadas por tu aplicación. 
+** Interceptor de Peticiones (Request)** Casos de Uso:
+Añadir headers comunes (ej: Content-Type, Authorization).
+
+Modificar datos antes de enviarlos (ej: formatear fechas).
+
+Loggear peticiones para debug.
+
+**Interceptor de Respuestas** (Response): Estandarizar respuestas: Extraer data de la respuesta.
+
+Manejar errores HTTP (401, 404, 500) de forma centralizada.
+
+Transformar datos (ej: convertir fechas de string a Date).
+
+---------------------------------------------------------------
+
+const api: AxiosInstance = axios.create({
+  baseURL: 'http://localhost:9000/api', // Ruta asignada al backend
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+axios.create({...}): Crea una instancia con configuración propia (puedes tener varias diferentes si lo necesitas).
+
+baseURL: Es la dirección base del backend. Todas las rutas se escribirán a partir de aquí (por ejemplo, api.get('/usuarios') hará una petición a http://localhost:9000/api/usuarios).
+
+timeout: Establece el tiempo máximo de espera (en milisegundos). Si la respuesta tarda más de 10 segundos (10000 ms), se cancela.
+
+headers: Define los encabezados por defecto de cada petición. En este caso, todas las peticiones serán de tipo JSON.
+
+---------------------------------------------------------------
+🚨 Interceptores de respuesta para manejar errores
+ts
+Copiar
+Editar
+api.interceptors.response.use(
+  (response) => {
+    return response.data;
+  },
+Interceptores (interceptors.response.use): Permiten modificar la respuesta antes de que llegue al código que la llamó.
+
+El primer parámetro es una función que se ejecuta si la respuesta es exitosa.
+
+return response.data: Devuelve solo los datos de la respuesta (quita la “envoltura” que normalmente trae response como status, headers, etc.).
+
+---------------------------------------------------------------------
+  (error) => {
+    const errorMessage = error.response?.data?.message || 
+                       error.message || 
+                       'Error de conexión con el servidor';
+Esta parte se ejecuta si la respuesta falla.
+
+Intenta extraer el mensaje de error de la respuesta del backend:
+
+error.response?.data?.message: mensaje personalizado del servidor.
+
+error.message: mensaje genérico del error.
+
+'Error de conexión con el servidor': mensaje por defecto si no se puede conectar al backend.
+
+--------------------------------------------------------------------
+    console.error("Error API:", {
+      url: error.config?.url,
+      status: error.response?.status,
+      message: errorMessage
+    });
+Muestra en la consola un error detallado que incluye:
+
+La URL que falló.
+
+El código de estado (por ejemplo, 404, 500).
+
+El mensaje de error.
+
+/////////////////////////////////////////////////////////////////////////
+src/stores/contacts.ts (Pinia)
+Responsabilidad: Gestiona el estado global de los contactos y las llamadas al backend. Usa api.ts para hacer peticiones HTTP.
+
+Acción	¿Qué hace?
+fetchContacts()	Carga todos los contactos desde el backend.
+saveContact()	Crea un nuevo contacto y lo agrega a la lista.
+updateContact()	Modifica un contacto existente.
+deleteContact()	Elimina un contacto por su ID.
+
+
+async  se usa para declarar funciones asíncronas, es decir, funciones que no se ejecutan completamente de inmediato, sino que esperan que ciertas operaciones (como llamadas al servidor) terminen antes de continuar.
+
+
+
+--
+interface Contact {
+  id: number;
+  name: string;
+  email: string;
+  phone_number: string;
+  company: string;
+  status: boolean;
+  createdAt: string;
+  updatedAt: string | null;
+  deletedAt: string | null;
+  createdBy: number;
+  updatedBy: number | null;
+  deletedBy: number | null;
+}
+Describe la estructura que tiene un contacto. Es útil para que TypeScript valide los datos y te dé autocompletado.
+
+------------------------------------------------------------------------------------------------------
+
+Un store es un lugar centralizado donde se guarda y gestiona el estado compartido de tu aplicación.
+   Estado inicial
+ts
+Copiar
+Editar
+state: () => ({
+  contacts: [] as Contact[],
+  loading: false,
+  error: null as string | null,
+}),
+contacts: lista de contactos cargados desde el backend.
+
+loading: bandera para saber si se está cargando algo.
+
+error: mensaje de error en caso de fallas.
+
+
+------------------------------------------------------------------------------------------------------
+
+async fetchContacts(force = false) {
+  try {
+    if (this.contacts.length === 0 || force) {
+      this.loading = true;
+      this.error = null;
+      const response = await api.get<Contact[]>('/contact');
+      this.contacts = response.data;
+      console.log("Contactos cargados desde backend:", this.contacts);
+    }
+  } catch (error) {
+    this.error = 'Error al cargar contactos';
+    console.error("Error al cargar contactos:", error);
+    throw error;
+  } finally {
+    this.loading = false;
+  }
+}
+Carga los contactos desde el servidor.
+
+Solo lo hace si la lista está vacía o si se fuerza (force = true).
+
+Usa this.contacts = response.data para guardar los datos en el estado.
+
+Si hay error, guarda un mensaje y lo lanza para que el componente lo pueda manejar.
+
+
+-------------------------------------------------------------------------------------------------------
+
+async saveContact(contact: Omit<Contact, 'id'>) {
+  try {
+    const payload = {
+      ...contact,
+      status: true
+    };
+    
+    const response = await api.post<Contact>('/contact', payload);
+    this.contacts = [...this.contacts, response.data];
+    return response;
+  } catch (error) {
+    console.error('Error guardando contacto:', error);
+    throw error;
+  }
+}
+Guarda un nuevo contacto.
+
+Omit<Contact, 'id'>: omite el campo id porque el backend lo genera automáticamente.
+
+Añade el nuevo contacto al final de la lista actual (this.contacts).
+
+
+------------------------------------------------------------------------------------------------------
+async updateContact(id: number, contact: Partial<Contact>) {
+  try {
+    const payload = {
+      ...contact,
+      status: true
+    };
+    
+    const response = await api.put<Contact>(`/contact/${id}`, payload);
+    
+    this.contacts = this.contacts.map(c => 
+      c.id === id ? { ...c, ...response.data } : c
+    );
+    
+    return response;
+  } catch (error) {
+    console.error('Error actualizando contacto:', error);
+    throw error;
+  }
+}
+Actualiza un contacto existente.
+
+Usa PUT para enviar los nuevos datos al servidor.
+
+Actualiza el contacto en la lista local usando map.
+
+Recorre la lista this.contacts con .map(), que devuelve un nuevo arreglo del mismo tamaño.
+
+Por cada contacto c en la lista:
+
+Compara si el id del contacto actual es igual al id recibido.
+
+Si es igual (es el contacto que quieres actualizar):
+
+Devuelve un nuevo objeto combinado con:
+
+Todos los datos actuales (...c).
+
+Sobrescritos o actualizados con los datos nuevos del backend (...response.data).
+
+-------------------------------------------------------------------------------
+
+async deleteContact(id: number) {
+  try {
+    await api.delete(`/contact/${id}`);
+    this.contacts = this.contacts.filter(c => c.id !== id);
+  } catch (error) {
+    console.error('Error al eliminar contacto:', error);
+    throw error;
+  }
+}
+Elimina un contacto por su id.
+
+Después de eliminarlo en el servidor, lo remueve de la lista local con filter.
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+src/views/ContactList.vue
+Responsabilidad: Muestra la lista de contactos y maneja interacciones.
+Interacciones:
+
+Usa el store (Pinia) para cargar datos.
+
+Llama a acciones como fetchContacts() o deleteContact().
+
+//////////////////////////////////////////////////////////////////////////////////////////
+src/components/ContactItem.vue
+Responsabilidad: Renderiza un contacto individual.
+Interacciones:
+
+Recibe datos del padre (ContactList.vue).
+
+Emite eventos para editar/eliminar (que luego se comunican con el backend).
+//////////////////////////////////////////////////////////////////////////////////////////
+
+src/views/ContactForm.vue
+Responsabilidad: Formulario para crear/editar contactos.
+Interacciones:
+
+Usa el store para enviar datos al backend (saveContact()/updateContact()).
