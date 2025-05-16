@@ -16,7 +16,7 @@ HU 8 – Implementación de clase base genérica para operaciones CRUD
 ---
 
 ## ✅ Criterios de Aceptación:
-- La clase base permite crear, actualizar y eliminar registros de manera genérica usando `T`.
+- La clase base permite crear, actualizar y eliminar registros de manera genérica usando objeto `T`.
 - Se registran correctamente los campos de auditoría en cada operación.
 - Se demuestra el uso en al menos 2 entidades (por ejemplo: `Producto` y `Factura`).
 - La entidad `Usuario` **no debe heredar ni usar** esta base.
@@ -25,17 +25,46 @@ HU 8 – Implementación de clase base genérica para operaciones CRUD
 
 ## 🧩 Tasks (Tareas):
 
-1. Diseñar la clase abstracta `BaseEntity<T>` con anotaciones JPA.
-2. Agregar campos de auditoría (`createdAt`, `updatedAt`, `deletedAt`, etc.) y sus getters/setters.
-3. Implementar métodos genéricos para:
-   - Crear (`create(T entity)`)
-   - Actualizar por ID (`updateById(Long id, T entity)`)
-   - Eliminar lógico por ID (`deleteById(Long id)`)
-4. Aplicar herencia de `BaseEntity` en entidades como `Producto`, `Factura`, `DetalleFactura`, etc.
-5. Probar el correcto registro y actualización de los campos de auditoría.
-6. Excluir explícitamente a la entidad `Usuario` del uso de esta clase base.
-7. Documentar la HU en el repositorio o tablero Trello con ejemplos de uso.
+### 👤 Integrante 1 
+1. Diseñar la clase abstracta `BaseEntity<T>`:
+   - Usar anotaciones JPA como `@MappedSuperclass`, `@Id`, `@GeneratedValue`, etc.
+   - Definir el campo `id` genérico o como `Long`, según diseño del proyecto.
+   - Asegurar que sea extendible por otras entidades.
 
+2. Agregar los campos de auditoría:
+   - `createdAt`, `updatedAt`, `deletedAt`, `createdBy`, `updatedBy`, `deletedBy`, `state`.
+   - Anotaciones: `@Column`, `@Temporal`, `@PrePersist`, `@PreUpdate`, etc.
+   - Generar `getters` y `setters`.
+
+---
+
+### 👤 Integrante 2 
+3. Implementar métodos genéricos en un servicio base (`BaseService<T>` o similar):
+   - `create(T entity)` para persistencia con control de fechas.
+   - `updateById(Long id, T entity)` para actualización.
+   - `deleteById(Long id)` para eliminación lógica (cambio de estado y `deletedAt`).
+
+4. Probar en una clase de prueba (o con Postman) el correcto funcionamiento de estos métodos usando una entidad como ejemplo (`Producto` o `Factura`).
+
+---
+
+### 👤 Integrante 3 
+5. Aplicar la herencia de `BaseEntity` en entidades del sistema:
+   - `Producto`, `Factura`, `DetalleFactura`, `Categoria`, etc.
+   - Asegurar que estas entidades no redefinan los atributos heredados.
+
+6. Excluir la entidad `Usuario` del uso de `BaseEntity`:
+   - Justificar por qué se excluye (por seguridad, estructura propia, autenticación personalizada).
+   - Verificar que `Usuario` funcione correctamente sin `BaseEntity`.
+
+---
+
+### 👤 Integrante 4 
+7. Documentar esta historia de usuario en el repositorio (o Trello):
+   - Agregar descripción, alcance, criterios de aceptación y tareas.
+   - Adjuntar ejemplos de uso de los métodos genéricos en código.
+   - Documentar cómo se hereda la clase y se reutiliza el CRUD.
+   - Comprobar que esté clara la exclusión de `Usuario`.
 ---
 
 ## 📌 Nota:
