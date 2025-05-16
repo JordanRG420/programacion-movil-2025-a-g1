@@ -16,3 +16,4 @@ Este directorio contiene toda la documentación relacionada con el proyecto Expl
 - `HU-09/`: Implementación de la Entidad de Factura para Generar una Factura al Cliente
 - `HU-10/`: Estructura Base del Frontend con Ionic React
 - `HU-11/`: Implementación de componentes reutilizables
+- `HU-12/`: Configuración de seguridad backend y servicios frontend
