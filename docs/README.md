@@ -14,3 +14,4 @@ Este directorio contiene toda la documentación relacionada con el proyecto Expl
 - `HU-07/`: Configuración Inicial del Backend con Spring Boot
 - `HU-08/`: Implementación de clase base genérica para operaciones CRUD
 - `HU-09/`: Implementación de la Entidad de Factura para Generar una Factura al Cliente
+- `HU-09/`: Estructura Base del Frontend con Ionic React
