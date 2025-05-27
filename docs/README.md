@@ -17,4 +17,5 @@ Este directorio contiene toda la documentación relacionada con el proyecto Expl
 - `HU-10/`: Estructura Base del Frontend con Ionic React
 - `HU-11/`: Implementación de componentes reutilizables
 - `HU-12/`: Configuración de seguridad backend y servicios frontend
-- `HU-12/`: Implementar descarga automática de PDF en factura
+- `HU-13/`: Implementar descarga automática de PDF en factura
+- `HU-14/`: Agregar atributo "código postal" para clientes
