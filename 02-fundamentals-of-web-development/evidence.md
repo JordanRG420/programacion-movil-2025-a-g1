@@ -57,3 +57,5 @@
 ![evidence](/02-fundamentals-of-web-development/additional_modules/07-futuro-desarrollo-web.png)
 
 #### Este curso ofrece una visión general del campo del desarrollo web, abordando el mercado laboral, las competencias necesarias y los roles profesionales relacionados. Aprenderás sobre las oportunidades en distintos sectores, la demanda global, las funciones clave dentro de un equipo de desarrollo web y recursos para continuar tu formación y mantenerte actualizado.
+
+## Hector lavao
